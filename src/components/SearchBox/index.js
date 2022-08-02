@@ -5,7 +5,7 @@ import Button from "../Button";
 function SearchBox() {
   return (
     <div className={styles.wrapper}>
-      <h1>Find in records</h1>
+      <h2>Find in records</h2>
       <div className={styles.searchWrapper}>
         <form>
           <Input placeholder="Search something..." />

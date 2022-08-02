@@ -1,5 +1,17 @@
-.sliderWrapper {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
+.wrapper {
+  h2 {
+    margin-left: 60px;
+    margin-bottom: 16px;
+  }
+
+  .sliderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    .content {
+      display: flex;
+      gap: 24px;
+    }
+  }
 }

@@ -1,0 +1,15 @@
+.itemWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+  line-height: 24px;
+  gap: 8px;
+  .text {
+    width: 80%;
+    font-weight: 700;
+  }
+  small {
+    color: var(--dark-gray);
+  }
+}
