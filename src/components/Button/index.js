@@ -1,7 +1,7 @@
 import React from "react";
-
-function Button() {
-  return <div>Button</div>;
+import styles from "./styles.module.scss";
+function Button({ children }) {
+  return <button className={styles.button}>{children}</button>;
 }
 
 export default Button;

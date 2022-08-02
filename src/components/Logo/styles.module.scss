@@ -1,0 +1,19 @@
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .textWrapper {
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 11px;
+    width: 72px;
+    margin-left: 260px;
+    color: var(--gray);
+  }
+}
