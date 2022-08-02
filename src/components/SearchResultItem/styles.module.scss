@@ -1,0 +1,19 @@
+.itemWrapper {
+  display: flex;
+  gap: 15px;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    small {
+      color: var(--gray-200);
+      font-size: 14px;
+    }
+  }
+}

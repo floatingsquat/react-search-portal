@@ -1,16 +1,14 @@
 import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import SearchBox from "../../components/SearchBox";
-import SearchResult from "../../components/SearchResult";
 import Slider from "../../components/Slider";
 import styles from "./styles.module.scss";
+import TopBar from "../../components/TopBar";
 function Home() {
   return (
     <div className={styles.homeWrapper}>
+      <TopBar />
       <Header />
-      <SearchBox />
-      <SearchResult />
       <main>
         <Slider />
       </main>
