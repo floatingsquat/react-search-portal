@@ -7,9 +7,11 @@ function SearchResult({ full }) {
   return (
     <div className={styles.resultWrapper}>
       <div className={styles.result}>
-        {searchedItems.map((item) => (
-          <SearchResultItem item={item} />
-        ))}
+        {searchedItems.length ? (
+          searchedItems.map((item) => <SearchResultItem item={item} />)
+        ) : (
+          <h3>There is no any data!</h3>
+        )}
       </div>
       {!full && <button className={styles.button}>Show more...</button>}
     </div>

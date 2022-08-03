@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import data from "../../config/data.json";
 const initialState = {
   items: data.data,
-  searchedItems: data.data,
+  searchedItems: [],
   searchQuery: "",
 };
 
