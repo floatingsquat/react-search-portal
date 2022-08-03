@@ -1,7 +1,7 @@
 import React from "react";
 import SearchResultItem from "../SearchResultItem";
 import styles from "./styles.module.scss";
-function SearchResult() {
+function SearchResult({ full }) {
   return (
     <div className={styles.resultWrapper}>
       <div className={styles.result}>
@@ -9,7 +9,7 @@ function SearchResult() {
         <SearchResultItem />
         <SearchResultItem />
       </div>
-      <button className={styles.button}>Show more...</button>
+      {!full && <button className={styles.button}>Show more...</button>}
     </div>
   );
 }

@@ -1,0 +1,38 @@
+.recordWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Roboto";
+  font-style: normal;
+  color: var(--record-gray);
+
+  .errorMessage {
+    align-self: flex-end;
+    max-width: 300px;
+  }
+  label {
+    font-weight: 700;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    width: 50%;
+    align-self: center;
+    margin-top: 65px;
+
+    button {
+      align-self: flex-end;
+    }
+  }
+  .header {
+    display: flex;
+    gap: 30px;
+    margin-top: 27px;
+    margin-bottom: 30px;
+    button {
+      color: black;
+    }
+  }
+}

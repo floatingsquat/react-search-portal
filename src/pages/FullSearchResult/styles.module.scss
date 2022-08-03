@@ -1,0 +1,48 @@
+.fullResultWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .paginationWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contentWrapper {
+    display: flex;
+    width: 840px;
+    margin: 0 auto;
+
+    .order {
+    }
+    .content {
+      max-width: 780px;
+      width: 100%;
+    }
+  }
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 27px;
+
+    img {
+      width: 220px;
+      height: 63px;
+    }
+
+    input {
+      padding: 13px 0px 7px 20px;
+      height: 46px;
+      margin-right: 12px;
+    }
+
+    .newRecord {
+      margin-left: 64px;
+    }
+  }
+}

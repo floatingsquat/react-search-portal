@@ -1,0 +1,37 @@
+.errorWrapper {
+  display: flex;
+  background: var(--light-gray);
+  border-radius: 8px;
+  padding: 11px 11px 10px 18px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-size: 14px;
+  color: var(--black);
+  gap: 2px;
+  .left {
+    display: flex;
+    flex-direction: column;
+    span {
+      margin-bottom: 8px;
+      margin-top: 21px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    small {
+    }
+  }
+
+  .center {
+    background: #ff4e78;
+    border-radius: 48px;
+    align-self: center;
+    padding: 8px 16px;
+    color: var(--white);
+  }
+
+  .right {
+    flex-shrink: 0;
+  }
+}
