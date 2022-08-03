@@ -7,6 +7,7 @@ import Pagination from "../../components/Pagination";
 
 import styles from "./styles.module.scss";
 import Order from "../../components/Order";
+import { Link } from "react-router-dom";
 function FullSearchResult() {
   return (
     <div className={styles.fullResultWrapper}>
@@ -14,7 +15,9 @@ function FullSearchResult() {
         <Logo />
         <SearchBox />
         <div className={styles.newRecord}>
-          <Button>Add new record</Button>
+          <Link to="/new-record">
+            <Button>Add new record</Button>
+          </Link>
         </div>
       </div>
       <div className={styles.contentWrapper}>

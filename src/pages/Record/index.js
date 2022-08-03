@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import ErrorBox from "../../components/ErrorBox";
 import Input from "../../components/Input";
@@ -9,7 +10,9 @@ function Record() {
     <div className={styles.recordWrapper}>
       <div className={styles.header}>
         <Logo />
-        <button>Return to List Page</button>
+        <Link to="/">
+          <button>Return to List Page</button>
+        </Link>
       </div>
       <div className={styles.content}>
         <Input label="Name Surname" placeholder="Enter name and surname" />
