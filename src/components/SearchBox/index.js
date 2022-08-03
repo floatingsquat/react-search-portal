@@ -22,8 +22,6 @@ function SearchBox({ home }) {
   // }, [searchQuery]);
 
   const onChangeHandler = (e) => {
-    //setSearch(e.target.value)
-    //console.log(e.target.value);
     dispatch(setSearchQuery(e.target.value));
     dispatch(getSearchedItems());
   };

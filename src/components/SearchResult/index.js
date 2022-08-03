@@ -8,12 +8,21 @@ function SearchResult({ full }) {
     <div className={styles.resultWrapper}>
       <div className={styles.result}>
         {searchedItems.length ? (
-          searchedItems.map((item) => <SearchResultItem item={item} />)
+          searchedItems.map((item, index) => {
+            if (index < 3) {
+              return <SearchResultItem item={item} />;
+            }
+            return null;
+          })
         ) : (
           <h3>There is no any data!</h3>
         )}
       </div>
-      {!full && <button className={styles.button}>Show more...</button>}
+      {!full && searchedItems.length ? (
+        <button className={styles.button}>Show more...</button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
