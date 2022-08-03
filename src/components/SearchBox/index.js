@@ -9,21 +9,16 @@ import {
 } from "../../features/search/searchSlice";
 function SearchBox({ home }) {
   const dispatch = useDispatch();
-  const { searchQuery } = useSelector((state) => state.search);
-
-  // useEffect(() => {
-  //   const delayedSearch = setTimeout(() => {
-  //     if (searchQuery) {
-  //       dispatch(getResult({ searchQuery }));
-  //     }
-  //   }, 500);
-
-  //   return () => clearTimeout(delayedSearch);
-  // }, [searchQuery]);
+  const { searchQuery, searchedItems } = useSelector((state) => state.search);
 
   const onChangeHandler = (e) => {
-    dispatch(setSearchQuery(e.target.value));
-    dispatch(getSearchedItems());
+    if (e.target.value.length > 2) {
+      dispatch(setSearchQuery(e.target.value));
+      dispatch(getSearchedItems());
+    } else if (e.target.value === "") {
+      dispatch(setSearchQuery(""));
+      dispatch(getSearchedItems());
+    }
   };
   return (
     <div className={styles.wrapper}>
@@ -31,7 +26,7 @@ function SearchBox({ home }) {
       <div className={styles.searchWrapper}>
         <form>
           <Input onChange={onChangeHandler} placeholder="Search something..." />
-          <Button>Search</Button>
+          <Button disabled={!searchQuery || !searchedItems}>Search</Button>
         </form>
       </div>
     </div>

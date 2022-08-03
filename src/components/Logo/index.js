@@ -6,7 +6,7 @@ function Logo({ text }) {
   return (
     <div className={styles.logoWrapper}>
       <Link to="/">
-        <img src={logo} alt="logo" />
+        <img src={logo} className={text && styles.logo} alt="logo" />
         {text && (
           <div className={styles.textWrapper}>
             <small>Search app</small>

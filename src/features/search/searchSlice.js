@@ -15,9 +15,11 @@ const searchSlice = createSlice({
     },
     getSearchedItems: (state) => {
       state.searchedItems = state.items.filter((item) => {
-        return item[0]
-          .toLowerCase()
-          .includes(state.searchQuery.toLowerCase().trim());
+        const nameSurname = item[0].toLowerCase();
+        const query = state.searchQuery.toLowerCase().trim();
+        const doesContain = nameSurname.includes(query);
+
+        return doesContain;
       });
     },
     setNewRecord: (state, action) => {

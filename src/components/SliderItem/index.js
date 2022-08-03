@@ -1,14 +1,12 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import stockImg from "../../assets/stock-img.svg";
-function SliderItem() {
+function SliderItem({ item }) {
   return (
     <div className={styles.itemWrapper}>
       <img src={stockImg} alt="stock" />
-      <div className={styles.text}>
-        A Plan to Rebuild Bus Terminal Eveyone Loves to Hate
-      </div>
-      <small>1h ago · by Troy Corlson</small>
+      <div className={styles.text}>{item.heading}</div>
+      <small>{item.text}</small>
     </div>
   );
 }

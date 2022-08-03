@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  //margin-right: 160px;
+
   .textWrapper {
     display: flex;
     justify-content: flex-end;
@@ -15,5 +15,9 @@
     width: 72px;
     margin-left: 260px;
     color: var(--gray);
+  }
+
+  .logo {
+    margin-right: 160px;
   }
 }
