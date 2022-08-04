@@ -9,7 +9,6 @@ function Slider() {
   const myRef = useRef();
   const prevClick = () => {
     const direction = myRef.current;
-    console.log(direction);
     direction.scrollLeft -= direction.offsetWidth;
     if (direction.scrollLeft <= 0) {
       direction.scrollLeft = direction.scrollWidth;
