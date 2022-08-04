@@ -4,15 +4,15 @@
   width: 100%;
 
   .error {
-    color: red;
+    color: var(--red);
   }
 
   .errorInput {
-    border-color: red;
+    border-color: var(--red);
   }
 
   .errorInput::placeholder {
-    color: red;
+    color: var(--red);
   }
 
   input {

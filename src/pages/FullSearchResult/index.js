@@ -7,9 +7,10 @@ import Pagination from "../../components/Pagination";
 
 import styles from "./styles.module.scss";
 import Order from "../../components/Order";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function FullSearchResult() {
+  const { query } = useParams();
   return (
     <div className={styles.fullResultWrapper}>
       <div className={styles.header}>
@@ -25,9 +26,9 @@ function FullSearchResult() {
         <div className={styles.content}>
           <SearchResult full={true} />
         </div>
-        <div className={styles.order}>
-          <Order />
-        </div>
+      </div>
+      <div className={styles.order}>
+        <Order />
       </div>
 
       <div className={styles.paginationWrapper}>

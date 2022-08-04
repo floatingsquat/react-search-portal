@@ -5,15 +5,24 @@ import styles from "./styles.module.scss";
 function SearchResult({ full }) {
   const { searchedItems, items } = useSelector((state) => state.search);
   return (
-    <div className={styles.resultWrapper}>
+    <div className={`${styles.resultWrapper} ${full && styles.full}`}>
       <div className={styles.result}>
         {searchedItems.length ? (
-          searchedItems.map((item, index) => {
-            if (index < 3) {
-              return <SearchResultItem item={item} />;
-            }
-            return null;
-          })
+          searchedItems.map(
+            (item, index) =>
+              full ? (
+                <>
+                  <SearchResultItem item={item} /> <hr />
+                </>
+              ) : (
+                index < 3 && <SearchResultItem item={item} full={true} />
+              )
+            // if (index < 3) {
+            //   return <SearchResultItem item={item} />;
+            // }
+
+            // return null;
+          )
         ) : (
           <h3>There is no any data!</h3>
         )}

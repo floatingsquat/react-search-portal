@@ -9,7 +9,25 @@
   }
   .content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      color: var(--gray);
+
+      span {
+        font-size: 17px;
+      }
+    }
 
     small {
       color: var(--gray-200);

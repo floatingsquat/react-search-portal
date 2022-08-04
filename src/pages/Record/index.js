@@ -21,6 +21,7 @@ function Record() {
     email: "",
     //date: dateFormat(new Date()),
   });
+  const [readyForAdd, setReadyForAdd] = useState(false);
   const [barErrors, setBarErrors] = useState({});
   const [inputErrors, setInputErrors] = useState([]);
   // const [errorBarActive, setErrorBarActive] = useState(false);
@@ -88,21 +89,13 @@ function Record() {
       dispatch(setNewRecord(newRecord));
       dispatch(setErrorBarActive(false));
     }
-    // if (!validationErrorExist && !nullErrorExist) {
-    //   const newRecord = [
-    //     records.name,
-    //     "Unknown Company",
-    //     records.email,
-    //     "29.11.2022",
-    //     records.country,
-    //     records.city,
-    //   ];
-    //   dispatch(setNewRecord(newRecord));
-    //   dispatch(setErrorBarActive(false));
-    // } else if (validationErrorExist) {
-    //   dispatch(setErrorBarActive(true));
-    // }
   };
+
+  // useEffect(() => {
+  //   let isReady = Object.values(records).every((x) => (x ? true : false));
+  //   setReadyForAdd(isReady);
+  //   console.log("isReady", isReady);
+  // }, [records]);
 
   const onChangeHandler = (event) => {
     setRecords({ ...records, [event.target.name]: event.target.value });

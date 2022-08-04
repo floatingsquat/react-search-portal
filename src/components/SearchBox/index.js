@@ -7,12 +7,14 @@ import {
   setSearchQuery,
   getSearchedItems,
 } from "../../features/search/searchSlice";
+import { Link } from "react-router-dom";
 function SearchBox({ home }) {
   const dispatch = useDispatch();
   const { searchQuery, searchedItems } = useSelector((state) => state.search);
 
+  const onClickHandler = () => {};
   const onChangeHandler = (e) => {
-    if (e.target.value.length > 2) {
+    if (e.target.value.length >= 2) {
       dispatch(setSearchQuery(e.target.value));
       dispatch(getSearchedItems());
     } else if (e.target.value === "") {
@@ -25,8 +27,19 @@ function SearchBox({ home }) {
       {home && <h2>Find in records</h2>}
       <div className={styles.searchWrapper}>
         <form>
-          <Input onChange={onChangeHandler} placeholder="Search something..." />
-          <Button disabled={!searchQuery || !searchedItems}>Search</Button>
+          <Input
+            onChange={onChangeHandler}
+            defaultValue={searchQuery}
+            placeholder="Search something..."
+          />
+          <Link to={`/search-result/${searchQuery}`}>
+            <Button
+              onClick={onClickHandler}
+              disabled={!searchQuery || !searchedItems}
+            >
+              Search
+            </Button>
+          </Link>
         </form>
       </div>
     </div>

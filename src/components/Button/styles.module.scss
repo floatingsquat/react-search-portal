@@ -10,3 +10,10 @@
   border-radius: 12px;
   background-color: var(--dark-blue);
 }
+
+.button:disabled {
+  background-color: var(--light-gray);
+}
+.button:hover {
+  background-color: var(--light-blue);
+}
