@@ -5,9 +5,6 @@ import { useDispatch } from "react-redux";
 import { setErrorBarActive } from "../../features/search/searchSlice";
 function ErrorBox({ error }) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log(error);
-  }, []);
 
   return (
     <div className={styles.errorWrapper}>

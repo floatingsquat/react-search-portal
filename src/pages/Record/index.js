@@ -12,6 +12,7 @@ import {
   setErrorBarActive,
   setNewRecord,
 } from "../../features/search/searchSlice";
+import { formNullCheck } from "../../helpers/formNullCheck";
 function Record() {
   const [records, setRecords] = useState({
     name: "",
@@ -21,6 +22,7 @@ function Record() {
     //date: dateFormat(new Date()),
   });
   const [barErrors, setBarErrors] = useState({});
+  const [inputErrors, setInputErrors] = useState([]);
   // const [errorBarActive, setErrorBarActive] = useState(false);
   const { items, errorBarActive } = useSelector((state) => state.search);
   const valList = [
@@ -30,6 +32,7 @@ function Record() {
       val: records.name,
       placeholder: "Enter name and surname",
       errorMessage: barErrors.name,
+      isNull: inputErrors.name,
     },
     {
       labelText: "Country",
@@ -37,6 +40,7 @@ function Record() {
       val: records.country,
       placeholder: "Enter a country name",
       errorMessage: barErrors.country,
+      isNull: inputErrors.country,
     },
     {
       labelText: "City",
@@ -44,6 +48,7 @@ function Record() {
       val: records.city,
       placeholder: "Enter a city name",
       errorMessage: barErrors.city,
+      isNull: inputErrors.city,
     },
     {
       labelText: "E-mail",
@@ -51,16 +56,27 @@ function Record() {
       val: records.email,
       placeholder: "Enter an e-mail (abc@xyz.com)",
       errorMessage: barErrors.email,
+      isNull: inputErrors.email,
     },
   ];
   const dispatch = useDispatch();
   const onClickHandler = (event) => {
     event.preventDefault();
     setBarErrors(formValidation(records));
-    const errorExist = Object.keys(barErrors).length >= 1;
-    if (!errorExist) {
-      //console.log("KAYIT EKLENEBİLİR");
-      //console.log(records);
+    setInputErrors(formNullCheck(records));
+
+    const validationErrorExist = Object.keys(barErrors).length >= 1;
+    const nullErrorExist = Object.keys(inputErrors).length >= 1;
+    //console.log("input Error exist?", inputErrors);
+
+    if (validationErrorExist || nullErrorExist) {
+      if (nullErrorExist) {
+        console.log("inputlar null");
+      }
+      if (validationErrorExist) {
+        dispatch(setErrorBarActive(true));
+      }
+    } else {
       const newRecord = [
         records.name,
         "Unknown Company",
@@ -71,16 +87,22 @@ function Record() {
       ];
       dispatch(setNewRecord(newRecord));
       dispatch(setErrorBarActive(false));
-      //console.log(items);
-    } else {
-      //console.log("girmesi gerek");
-      dispatch(setErrorBarActive(true));
     }
+    // if (!validationErrorExist && !nullErrorExist) {
+    //   const newRecord = [
+    //     records.name,
+    //     "Unknown Company",
+    //     records.email,
+    //     "29.11.2022",
+    //     records.country,
+    //     records.city,
+    //   ];
+    //   dispatch(setNewRecord(newRecord));
+    //   dispatch(setErrorBarActive(false));
+    // } else if (validationErrorExist) {
+    //   dispatch(setErrorBarActive(true));
+    // }
   };
-
-  useEffect(() => {
-    console.log("errorBarActive: ", errorBarActive);
-  }, [errorBarActive]);
 
   const onChangeHandler = (event) => {
     setRecords({ ...records, [event.target.name]: event.target.value });
@@ -102,6 +124,7 @@ function Record() {
             placeholder={item.placeholder}
             onChange={onChangeHandler}
             label={item.labelText}
+            error={item.isNull}
           />
         ))}
         <Button onClick={onClickHandler}>Add</Button>

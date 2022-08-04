@@ -11,21 +11,17 @@ export const formValidation = (form) => {
     email: "• Email: It is not valid!",
   };
   const showErrorList = {};
-  //console.log(!name.test);
+
   if (!name.test(form.name.trim())) {
-    console.log("name failed");
     showErrorList.name = errorList["name"];
   }
   if (!country.test(form.country.trim())) {
-    console.log("country failed");
     showErrorList.country = errorList["country"];
   }
   if (!city.test(form.city.trim())) {
-    console.log("city failed");
     showErrorList.city = errorList["city"];
   }
   if (!email.test(form.email.trim())) {
-    console.log("email failed");
     showErrorList.email = errorList["email"];
   }
   return showErrorList;

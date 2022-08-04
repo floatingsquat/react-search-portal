@@ -28,9 +28,7 @@ const searchSlice = createSlice({
       state.items.push(action.payload);
     },
     setErrorBarActive: (state, action) => {
-      console.log(action.payload);
       state.errorBarActive = action.payload;
-      console.log("son değeri", state.errorBarActive);
     },
   },
 });
