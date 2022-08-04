@@ -4,6 +4,7 @@ const initialState = {
   items: data.data,
   searchedItems: [],
   searchQuery: "",
+  errorBarActive: false,
 };
 
 const searchSlice = createSlice({
@@ -23,11 +24,21 @@ const searchSlice = createSlice({
       });
     },
     setNewRecord: (state, action) => {
+      //console.log(action.payload);
       state.items.push(action.payload);
+    },
+    setErrorBarActive: (state, action) => {
+      console.log(action.payload);
+      state.errorBarActive = action.payload;
+      console.log("son değeri", state.errorBarActive);
     },
   },
 });
 
-export const { setSearchQuery, setNewRecord, getSearchedItems } =
-  searchSlice.actions;
+export const {
+  setSearchQuery,
+  setNewRecord,
+  getSearchedItems,
+  setErrorBarActive,
+} = searchSlice.actions;
 export default searchSlice.reducer;

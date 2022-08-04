@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import errorClose from "../../assets/error-close.svg";
-function ErrorBox() {
+import { useDispatch } from "react-redux";
+import { setErrorBarActive } from "../../features/search/searchSlice";
+function ErrorBox({ error }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log(error);
+  }, []);
+
   return (
     <div className={styles.errorWrapper}>
       <div className={styles.left}>
-        <span>Error while adding link element</span>
-        <small>Name and surname should contain at least 2 words</small>
+        <span>Error while adding new record!</span>
+        <small>{error?.name}</small>
+        <small>{error?.country}</small>
+        <small>{error?.city}</small>
+        <small>{error?.email}</small>
       </div>
       <div className={styles.center}>
         <span>Error</span>
       </div>
       <div className={styles.right}>
-        <img src={errorClose} alt="error-close" />
+        <button onClick={() => dispatch(setErrorBarActive(false))}>
+          <img src={errorClose} alt="error-close" />
+        </button>
       </div>
     </div>
   );
