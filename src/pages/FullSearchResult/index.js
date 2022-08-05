@@ -6,7 +6,7 @@ import SearchResult from "../../components/SearchResult";
 import Pagination from "../../components/Pagination";
 
 import styles from "./styles.module.scss";
-import Order from "../../components/Order";
+import OrderBy from "../../components/OrderBy";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -37,9 +37,9 @@ function FullSearchResult() {
         <div className={styles.content}>
           <SearchResult full={true} />
         </div>
-      </div>
-      <div className={styles.order}>
-        <Order />
+        <div className={styles.order}>
+          <OrderBy />
+        </div>
       </div>
 
       <div className={styles.paginationWrapper}>

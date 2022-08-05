@@ -1,0 +1,49 @@
+.orderWrapper {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: left;
+  margin-top: 52px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 155px;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 16px;
+    background: var(--white);
+    border: 1px solid var(--light-grey);
+    box-shadow: 4px 6px 12px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 6px;
+    gap: 6px;
+
+    button {
+      color: var(--black);
+      padding: 6px;
+      &:hover {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        background: var(--gray-100);
+        border-radius: 8px;
+        color: var(--white);
+      }
+    }
+  }
+
+  .btnWrapper {
+    width: 155px;
+    .orderBtn {
+      display: flex;
+      background: #f3f2f2;
+      border: 1px solid #414141;
+      border-radius: 8px;
+      color: var(--gray);
+      padding: 6px 8px;
+      gap: 6px;
+    }
+  }
+}
