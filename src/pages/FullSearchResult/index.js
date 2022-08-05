@@ -43,13 +43,15 @@ function FullSearchResult() {
       </div>
 
       <div className={styles.paginationWrapper}>
-        <Pagination
-          totalPages={totalPages}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          pageRange={pageRange}
-          setPageRange={setPageRange}
-        />
+        {searchedItems.length > 5 && (
+          <Pagination
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            pageRange={pageRange}
+            setPageRange={setPageRange}
+          />
+        )}
       </div>
     </div>
   );

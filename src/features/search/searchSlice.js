@@ -14,16 +14,7 @@ const initialState = {
   errorBarActive: false,
   totalPages: Math.ceil(data.data.length / 5),
   currentPage: 1,
-  pageRange: 3,
-
-  /* 
-  
-  totalPages={totalPages}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          pageRange={pageRange}
-          setPageRange={setPageRange}
-  */
+  pageRange: 5,
 };
 
 const searchSlice = createSlice({
@@ -32,7 +23,7 @@ const searchSlice = createSlice({
   reducers: {
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
-      //state.totalPages = 2;
+
       state.currentPage = 1;
       if (!state.searchQuery) {
         state.searchedItems = state.items;

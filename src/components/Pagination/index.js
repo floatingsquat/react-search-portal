@@ -18,7 +18,7 @@ function Pagination() {
   //   setPages(Array.from(Array(totalPages).keys()));
   // }, []);
 
-  const pages = Array.from(Array(totalPages).keys());
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   useEffect(() => {
     dispatch(setSlicedSearchedItems());
@@ -28,10 +28,13 @@ function Pagination() {
     dispatch(setCurrentPage(index));
 
     dispatch(setSlicedSearchedItems());
+
+    console.log("Butondan gelen page: ", index);
   };
 
   const renderPaginationItem = (page) => {
-    if (page <= pageRange && page > pageRange - 3) {
+    if (page <= pageRange && page > pageRange - 5) {
+      //console.log("render olan page buttonları: ", page);
       return (
         <button
           className={`${styles.page} ${
@@ -50,23 +53,23 @@ function Pagination() {
   };
 
   const handlePrevious = () => {
-    if (currentPage - 1 <= pageRange - 3) {
-      dispatch(setPageRange(pageRange - 3));
+    if (currentPage - 1 <= pageRange - 5) {
+      dispatch(setPageRange(pageRange - 5));
     }
+    console.log("handlePrevious", currentPage - 1);
 
     dispatch(setCurrentPage(currentPage - 1));
-    //dispatch(getEvents({ searchQuery, page: currentPage - 1 }));
+
     dispatch(setSlicedSearchedItems());
   };
 
   const handleNext = () => {
     if (currentPage + 1 > pageRange) {
-      dispatch(setPageRange(pageRange + 3));
+      dispatch(setPageRange(pageRange + 5));
     }
-
+    console.log("handleNext", currentPage + 1);
     dispatch(setCurrentPage(currentPage + 1));
     dispatch(setSlicedSearchedItems());
-    //dispatch(getEvents({ searchQuery, page: currentPage + 1 }));
   };
 
   return (
