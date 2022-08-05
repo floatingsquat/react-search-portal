@@ -28,6 +28,7 @@ function SearchBox({ home }) {
       <div className={styles.searchWrapper}>
         <form>
           <Input
+            home={home}
             onChange={onChangeHandler}
             defaultValue={searchQuery}
             placeholder="Search something..."

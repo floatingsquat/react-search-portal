@@ -33,8 +33,8 @@ function Slider() {
           </button>
         </div>
         <div className={styles.content} ref={myRef}>
-          {slides.map((item) => (
-            <SliderItem item={item} />
+          {slides.map((item, index) => (
+            <SliderItem key={index} item={item} />
           ))}
         </div>
         <div className={styles.right}>

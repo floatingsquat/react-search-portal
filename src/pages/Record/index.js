@@ -110,7 +110,7 @@ function Record() {
       </div>
 
       <div className={styles.content}>
-        {valList.map((item) => (
+        {valList.map((item, index) => (
           <Input
             name={item.name}
             value={item.val}
@@ -118,6 +118,7 @@ function Record() {
             onChange={onChangeHandler}
             label={item.labelText}
             error={item.isNull}
+            key={index}
           />
         ))}
         <Button onClick={onClickHandler}>Add</Button>

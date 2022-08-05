@@ -6,7 +6,6 @@ import "./styles/reset.css";
 import Record from "./pages/Record";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-
 function App() {
   return (
     <Provider store={store}>

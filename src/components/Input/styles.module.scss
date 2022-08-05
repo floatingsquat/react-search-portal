@@ -15,18 +15,39 @@
     color: var(--red);
   }
 
-  input {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    border-radius: 8px;
-    padding: 16px;
-    height: 48px;
-    border: 2px solid var(--dark-blue);
-    &:hover {
-      background-color: var(--input-hover-color);
+  .onlyInputWrapper {
+    position: relative;
+    display: flex;
+    .searchIcon {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      height: 1.8rem;
+      transform: translateY(-50%);
+    }
+
+    img {
+      width: 18px;
+    }
+
+    .paddingRemove {
+      padding-left: 16px;
+    }
+    input {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      border-radius: 8px;
+      width: 100%;
+      padding: 16px;
+      padding-left: 40px;
+      height: 48px;
+      border: 2px solid var(--dark-blue);
+      &:hover {
+        background-color: var(--input-hover-color);
+      }
     }
   }
 }

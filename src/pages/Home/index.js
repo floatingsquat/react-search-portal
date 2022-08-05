@@ -6,17 +6,14 @@ import styles from "./styles.module.scss";
 import TopBar from "../../components/TopBar";
 function Home() {
   return (
-    <>
-      <div className={styles.homeWrapper}>
-        <TopBar />
-        <Header />
-        <main>
-          <Slider />
-        </main>
-        <Footer />
-      </div>
-      <div className={styles.footerShadow} />
-    </>
+    <div className={styles.homeWrapper}>
+      <TopBar />
+      <Header />
+      <main>
+        <Slider />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

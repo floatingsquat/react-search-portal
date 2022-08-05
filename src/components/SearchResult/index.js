@@ -20,10 +20,16 @@ function SearchResult({ full }) {
             (item, index) =>
               full ? (
                 <>
-                  <SearchResultItem item={item} /> <hr />
+                  <SearchResultItem key={index} item={item} /> <hr />
                 </>
               ) : (
-                index < 3 && <SearchResultItem item={item} full={true} />
+                index < 3 && (
+                  <SearchResultItem
+                    key={Math.random()}
+                    item={item}
+                    full={true}
+                  />
+                )
               )
             // if (index < 3) {
             //   return <SearchResultItem item={item} />;
