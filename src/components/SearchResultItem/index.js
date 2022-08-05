@@ -12,10 +12,12 @@ function SearchResultItem({ item, full }) {
           <span>{item[0]}</span>
           <small>{item[1]}</small>
         </div>
-        <div className={styles.right}>
-          <span>{item[4]}</span>
-          <small>{item[3]}</small>
-        </div>
+        {!full && (
+          <div className={styles.right}>
+            <span>{item[4]}</span>
+            <small>{item[3]}</small>
+          </div>
+        )}
       </div>
     </div>
   );

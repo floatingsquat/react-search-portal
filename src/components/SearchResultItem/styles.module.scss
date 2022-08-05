@@ -1,6 +1,12 @@
 .itemWrapper {
   display: flex;
   gap: 15px;
+  padding: 10px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: var(--light-blue);
+  }
 
   .icon {
     display: flex;

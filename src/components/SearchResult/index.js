@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import SearchResultItem from "../SearchResultItem";
 import styles from "./styles.module.scss";
 function SearchResult({ full }) {
-  const { searchedItems, items } = useSelector((state) => state.search);
+  const { searchedItems, slicedSearchedItems, searchQuery } = useSelector(
+    (state) => state.search
+  );
+
+  // useEffect(() => {
+  //   console.log("sliced", searchedItems.slice(0, 1));
+  // }, [searchQuery]);
+
   return (
     <div className={`${styles.resultWrapper} ${full && styles.full}`}>
       <div className={styles.result}>
-        {searchedItems.length ? (
-          searchedItems.map(
+        {(full ? slicedSearchedItems : searchedItems).length ? (
+          (full ? slicedSearchedItems : searchedItems).map(
             (item, index) =>
               full ? (
                 <>
@@ -28,7 +36,9 @@ function SearchResult({ full }) {
         )}
       </div>
       {!full && searchedItems.length ? (
-        <button className={styles.button}>Show more...</button>
+        <Link className={styles.button} to={`/search-result/${searchQuery}`}>
+          Show more...
+        </Link>
       ) : (
         ""
       )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../components/Logo";
 import SearchBox from "../../components/SearchBox";
@@ -8,9 +8,20 @@ import Pagination from "../../components/Pagination";
 import styles from "./styles.module.scss";
 import Order from "../../components/Order";
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function FullSearchResult() {
   const { query } = useParams();
+  const { searchedItems, totalPages } = useSelector((state) => state.search);
+  //const totalPages = items?.length;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageRange, setPageRange] = useState(3);
+
+  useEffect(() => {
+    console.log(totalPages);
+  }, []);
+
   return (
     <div className={styles.fullResultWrapper}>
       <div className={styles.header}>
@@ -32,7 +43,13 @@ function FullSearchResult() {
       </div>
 
       <div className={styles.paginationWrapper}>
-        <Pagination />
+        <Pagination
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          pageRange={pageRange}
+          setPageRange={setPageRange}
+        />
       </div>
     </div>
   );

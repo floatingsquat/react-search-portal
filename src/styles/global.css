@@ -11,4 +11,6 @@
   --red: #ff0000;
   --footer-blue: rgba(41, 78, 152, 0.72);
   --record-gray: #686868;
+  --light-blue: rgba(79, 117, 194, 0.21);
+  --input-hover-color: rgba(100, 100, 100, 0.08);
 }

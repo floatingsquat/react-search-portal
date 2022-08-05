@@ -12,9 +12,9 @@ function SearchBox({ home }) {
   const dispatch = useDispatch();
   const { searchQuery, searchedItems } = useSelector((state) => state.search);
 
-  const onClickHandler = () => {};
   const onChangeHandler = (e) => {
-    if (e.target.value.length >= 2) {
+    if (e.target.value.length >= 0) {
+      // 2 yap
       dispatch(setSearchQuery(e.target.value));
       dispatch(getSearchedItems());
     } else if (e.target.value === "") {
@@ -33,12 +33,7 @@ function SearchBox({ home }) {
             placeholder="Search something..."
           />
           <Link to={`/search-result/${searchQuery}`}>
-            <Button
-              onClick={onClickHandler}
-              disabled={!searchQuery || !searchedItems}
-            >
-              Search
-            </Button>
+            <Button disabled={!searchQuery || !searchedItems}>Search</Button>
           </Link>
         </form>
       </div>

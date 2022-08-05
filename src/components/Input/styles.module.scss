@@ -16,9 +16,17 @@
   }
 
   input {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
     border-radius: 8px;
     padding: 16px;
     height: 48px;
     border: 2px solid var(--dark-blue);
+    &:hover {
+      background-color: var(--input-hover-color);
+    }
   }
 }
