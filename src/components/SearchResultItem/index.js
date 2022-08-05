@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import locationIcon from "../../assets/location.svg";
+import { dateFormat, dateFormatCurrent } from "../../helpers/dateFormat";
 function SearchResultItem({ item, full }) {
   return (
     <div className={styles.itemWrapper}>
@@ -15,7 +16,7 @@ function SearchResultItem({ item, full }) {
         {!full && (
           <div className={styles.right}>
             <span>{item[4]}</span>
-            <small>{item[3]}</small>
+            <small>{dateFormatCurrent(item[3])}</small>
           </div>
         )}
       </div>

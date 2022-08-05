@@ -31,8 +31,23 @@
     gap: 30px;
     margin-top: 27px;
     margin-bottom: 30px;
-    button {
-      color: black;
+
+    .backBtnWrapper {
+      align-self: center;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      a {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      button {
+        color: var(--black);
+      }
     }
   }
 }

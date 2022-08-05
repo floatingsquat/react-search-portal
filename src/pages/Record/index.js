@@ -6,26 +6,28 @@ import ErrorBox from "../../components/ErrorBox";
 import Input from "../../components/Input";
 import Logo from "../../components/Logo";
 import styles from "./styles.module.scss";
-import { dateFormat } from "../../helpers/dateFormat";
+import { dateFormatCurrent } from "../../helpers/dateFormat";
 import { formValidation } from "../../helpers/formValidation";
 import {
   setErrorBarActive,
   setNewRecord,
 } from "../../features/search/searchSlice";
 import { formNullCheck } from "../../helpers/formNullCheck";
+import returnBack from "../../assets/return-back.svg";
 function Record() {
   const [records, setRecords] = useState({
     name: "",
     country: "",
     city: "",
     email: "",
-    //date: dateFormat(new Date()),
+    date: new Date().toLocaleDateString(),
   });
   const [readyForAdd, setReadyForAdd] = useState(false);
   const [barErrors, setBarErrors] = useState({});
   const [inputErrors, setInputErrors] = useState([]);
   // const [errorBarActive, setErrorBarActive] = useState(false);
   const { items, errorBarActive } = useSelector((state) => state.search);
+
   const valList = [
     {
       labelText: "Name Surname",
@@ -82,7 +84,7 @@ function Record() {
         records.name,
         "Unknown Company",
         records.email,
-        "29.11.2022",
+        records.date,
         records.country,
         records.city,
       ];
@@ -104,9 +106,12 @@ function Record() {
     <div className={styles.recordWrapper}>
       <div className={styles.header}>
         <Logo />
-        <Link to="/">
-          <button>Return to List Page</button>
-        </Link>
+        <div className={styles.backBtnWrapper}>
+          <Link to="/">
+            <img src={returnBack} alt="return-back" />
+            <button>Return to List Page</button>
+          </Link>
+        </div>
       </div>
 
       <div className={styles.content}>
