@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../config/data.json";
+import {
+  ascendingNameSort,
+  ascendingYearSort,
+  descendingNameSort,
+  descendingYearSort,
+} from "../../helpers/sortBy";
 const initialState = {
   items: data.data,
   searchedItems: data.data,
@@ -68,6 +74,26 @@ const searchSlice = createSlice({
     setPageRange: (state, action) => {
       state.pageRange = action.payload;
     },
+
+    setOrderByFilter: (state, action) => {
+      if (Number(action.payload) === 0) {
+        state.slicedSearchedItems = ascendingNameSort(
+          state.slicedSearchedItems
+        );
+      } else if (Number(action.payload) === 1) {
+        state.slicedSearchedItems = descendingNameSort(
+          state.slicedSearchedItems
+        );
+      } else if (Number(action.payload) === 2) {
+        state.slicedSearchedItems = ascendingYearSort(
+          state.slicedSearchedItems
+        );
+      } else {
+        state.slicedSearchedItems = descendingYearSort(
+          state.slicedSearchedItems
+        );
+      }
+    },
   },
 });
 
@@ -80,5 +106,6 @@ export const {
   setCurrentPage,
   setPageRange,
   setSlicedSearchedItems,
+  setOrderByFilter,
 } = searchSlice.actions;
 export default searchSlice.reducer;

@@ -1,11 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import orderIcon from "../../assets/order.svg";
+import { useDispatch } from "react-redux";
+import { setOrderByFilter } from "../../features/search/searchSlice";
 
 function OrderBy() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
   const container = useRef(null);
+  const [filters, setFilters] = useState([
+    "Name ascending",
+    "Name descending",
+    "Year ascending",
+    "Year descending",
+  ]);
 
+  const onClickHandler = (e) => {
+    dispatch(setOrderByFilter(e.target.name));
+  };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -30,10 +42,11 @@ function OrderBy() {
       </div>
       {open && (
         <div class={styles.content}>
-          <button>Name ascending</button>
-          <button>Name descending</button>
-          <button>Year ascending</button>
-          <button>Year descending</button>
+          {filters.map((item, index) => (
+            <button name={index} onClick={onClickHandler}>
+              {item}
+            </button>
+          ))}
         </div>
       )}
     </div>
