@@ -1,10 +1,12 @@
 .recordWrapper {
   display: flex;
   flex-direction: column;
+  max-width: 1280px;
   width: 100%;
   font-family: "Roboto";
   font-style: normal;
   color: var(--record-gray);
+  margin: 0 auto;
 
   .errorMessage {
     align-self: flex-end;

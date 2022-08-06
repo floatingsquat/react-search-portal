@@ -21,10 +21,9 @@ function Record() {
     email: "",
     date: new Date().toLocaleDateString(),
   });
-  //const [readyForAdd, setReadyForAdd] = useState(false);
+
   const [barErrors, setBarErrors] = useState({});
   const [inputErrors, setInputErrors] = useState({});
-  // const [errorBarActive, setErrorBarActive] = useState(false);
   const { errorBarActive } = useSelector((state) => state.search);
   const validationErrorExist = Object.keys(barErrors).length >= 1;
   const nullErrorExist = Object.keys(inputErrors).length >= 1;

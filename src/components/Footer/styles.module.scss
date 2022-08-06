@@ -1,16 +1,22 @@
-.footer {
+.container {
   font-family: "Roboto";
   font-style: normal;
-  display: flex;
-  flex-wrap: wrap;
   background-color: var(--footer-blue);
-  //width: 100%;
-  padding: 27px;
-  justify-content: space-between;
+  display: flex;
   margin-top: 60px;
-
-  .locationMap {
+  .footer {
     display: flex;
-    width: 40%;
+    flex-wrap: wrap;
+
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 27px;
+    justify-content: center;
+
+    .locationMap {
+      display: flex;
+      width: 40%;
+    }
   }
 }
