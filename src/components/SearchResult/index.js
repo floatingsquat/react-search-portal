@@ -44,7 +44,7 @@ function SearchResult({ full }) {
       </div>
       {!full && searchedItems.length ? (
         <Link className={styles.button} to={`/search-result/${searchQuery}`}>
-          Show more...
+          <span onClick={() => dispatch(setCurrentPage(1))}>Show more...</span>
         </Link>
       ) : (
         ""

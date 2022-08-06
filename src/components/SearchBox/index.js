@@ -42,7 +42,12 @@ function SearchBox({ home }) {
             placeholder="Search something..."
           />
           <Link to={`/search-result/${searchQuery}`}>
-            <Button disabled={!searchQuery || !searchedItems}>Search</Button>
+            <Button
+              onClick={() => dispatch(setCurrentPage(1))}
+              disabled={!searchQuery || !searchedItems}
+            >
+              Search
+            </Button>
           </Link>
         </form>
       </div>
