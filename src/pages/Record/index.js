@@ -63,6 +63,7 @@ function Record() {
     },
   ];
   const dispatch = useDispatch();
+
   const onClickHandler = (event) => {
     event.preventDefault();
     setBarErrors(formValidation(records));
@@ -90,6 +91,7 @@ function Record() {
       ];
       dispatch(setNewRecord(newRecord));
       dispatch(setErrorBarActive(false));
+      alert("Done!");
     }
   };
 

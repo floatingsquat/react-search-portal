@@ -41,7 +41,7 @@ function OrderBy() {
         </button>
       </div>
       {open && (
-        <div class={styles.content}>
+        <div className={styles.content}>
           {filters.map((item, index) => (
             <button name={index} key={index} onClick={onClickHandler}>
               {item}
