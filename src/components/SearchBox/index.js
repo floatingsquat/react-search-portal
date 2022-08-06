@@ -22,7 +22,7 @@ function SearchBox({ home }) {
   }, [searchQuery]);
 
   const onChangeHandler = (e) => {
-    if (e.target.value.length >= 0) {
+    if (e.target.value.length >= 2) {
       // 2 yap
       dispatch(setSearchQuery(e.target.value));
       dispatch(getSearchedItems());

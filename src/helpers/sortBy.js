@@ -18,8 +18,8 @@ export function descendingNameSort(arr) {
 
 export function ascendingYearSort(arr) {
   const sortedArray = [...arr].sort(function (a, b) {
-    if (a[3] > b[3]) return 1;
-    if (a[3] < b[3]) return -1;
+    if (new Date(a[3]) > new Date(b[3])) return 1;
+    if (new Date(a[3]) < new Date(b[3])) return -1;
     return 0;
   });
 
