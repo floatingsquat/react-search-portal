@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import locationIcon from "../../assets/location.svg";
-import { dateFormat, dateFormatCurrent } from "../../helpers/dateFormat";
+import { dateFormatCurrent } from "../../helpers/dateFormat";
 function SearchResultItem({ item, full }) {
   return (
     <div className={styles.itemWrapper}>

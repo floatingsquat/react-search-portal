@@ -3,17 +3,11 @@ import styles from "./styles.module.scss";
 import orderIcon from "../../assets/order.svg";
 import { useDispatch } from "react-redux";
 import { setOrderByFilter } from "../../features/search/searchSlice";
-
+import { ORDER_BY_VALUES } from "../../constants";
 function OrderBy() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const container = useRef(null);
-  const [filters, setFilters] = useState([
-    "Name ascending",
-    "Name descending",
-    "Year ascending",
-    "Year descending",
-  ]);
 
   const onClickHandler = (e) => {
     dispatch(setOrderByFilter(e.target.name));
@@ -42,7 +36,7 @@ function OrderBy() {
       </div>
       {open && (
         <div className={styles.content}>
-          {filters.map((item, index) => (
+          {ORDER_BY_VALUES.map((item, index) => (
             <button name={index} key={index} onClick={onClickHandler}>
               {item}
             </button>

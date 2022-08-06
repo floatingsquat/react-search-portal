@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import errorClose from "../../assets/error-close.svg";
 import { useDispatch } from "react-redux";

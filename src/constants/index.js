@@ -1,0 +1,29 @@
+//Pagination
+const DEFAULT_PAGE = 1;
+const DEFAULT_PAGE_RANGE = 5;
+
+// ORDER BY
+const ORDER_BY_VALUES = [
+  "Name ascending",
+  "Name descending",
+  "Year ascending",
+  "Year descending",
+];
+
+const ORDER_BY_ASCENDING_NAME = 0;
+const ORDER_BY_DESCENDING_NAME = 1;
+const ORDER_BY_ASCENDING_YEAR = 2;
+
+//STORE
+const DEFAULT_SEARCH_QUERY = "";
+const DEFAULT_ERROR_BAR_VISIBILITY = false;
+export {
+  DEFAULT_PAGE,
+  DEFAULT_PAGE_RANGE,
+  ORDER_BY_VALUES,
+  DEFAULT_SEARCH_QUERY,
+  DEFAULT_ERROR_BAR_VISIBILITY,
+  ORDER_BY_ASCENDING_NAME,
+  ORDER_BY_DESCENDING_NAME,
+  ORDER_BY_ASCENDING_YEAR,
+};

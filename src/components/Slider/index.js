@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import SliderItem from "../SliderItem";
 import leftArrow from "../../assets/left-arrow.svg";

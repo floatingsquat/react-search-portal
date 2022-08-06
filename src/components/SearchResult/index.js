@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchResultItem from "../SearchResultItem";
@@ -6,12 +5,9 @@ import styles from "./styles.module.scss";
 import { setCurrentPage } from "../../features/search/searchSlice";
 function SearchResult({ full }) {
   const dispatch = useDispatch();
-  const { searchedItems, slicedSearchedItems, searchQuery, currentPage } =
-    useSelector((state) => state.search);
-
-  // useEffect(() => {
-  //   console.log("sliced", searchedItems.slice(0, 1));
-  // }, [searchQuery]);
+  const { searchedItems, slicedSearchedItems, searchQuery } = useSelector(
+    (state) => state.search
+  );
 
   return (
     <div className={`${styles.resultWrapper} ${full && styles.full}`}>

@@ -1,6 +1,4 @@
-import React from "react";
 import styles from "./styles.module.scss";
-//import stockImg from "../../../public/stock-img.svg";
 function SliderItem({ item }) {
   return (
     <div className={styles.itemWrapper}>

@@ -12,14 +12,15 @@ import {
   setCleanUp,
 } from "../../features/search/searchSlice";
 import { Link } from "react-router-dom";
+import { DEFAULT_PAGE, DEFAULT_PAGE_RANGE } from "../../constants";
 function SearchBox({ home }) {
   const dispatch = useDispatch();
   const { searchQuery, searchedItems } = useSelector((state) => state.search);
 
   useEffect(() => {
     dispatch(setSlicedSearchedItems());
-    dispatch(setPageRange(5)); // to fix : type something and go page at least 6, then type something another.
-  }, [setSearchQuery]);
+    dispatch(setPageRange(DEFAULT_PAGE_RANGE)); // to fix : type something and go page at least 6, then type something another.
+  }, [searchQuery]);
 
   const onChangeHandler = (e) => {
     if (e.target.value !== "") {
@@ -43,7 +44,7 @@ function SearchBox({ home }) {
           />
           <Link to={`/search-result/${searchQuery}`}>
             <Button
-              onClick={() => dispatch(setCurrentPage(1))}
+              onClick={() => dispatch(setCurrentPage(DEFAULT_PAGE))}
               disabled={!searchQuery || !searchedItems}
             >
               Search

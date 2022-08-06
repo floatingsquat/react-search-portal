@@ -1,6 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../config/data.json";
 import {
+  DEFAULT_ERROR_BAR_VISIBILITY,
+  DEFAULT_PAGE,
+  DEFAULT_PAGE_RANGE,
+  DEFAULT_SEARCH_QUERY,
+  ORDER_BY_ASCENDING_NAME,
+  ORDER_BY_ASCENDING_YEAR,
+  ORDER_BY_DESCENDING_NAME,
+} from "../../constants";
+import {
   ascendingNameSort,
   ascendingYearSort,
   descendingNameSort,
@@ -10,11 +19,11 @@ const initialState = {
   items: data.data,
   searchedItems: data.data,
   slicedSearchedItems: [],
-  searchQuery: "",
-  errorBarActive: false,
-  totalPages: Math.ceil(data.data.length / 5),
-  currentPage: 1,
-  pageRange: 5,
+  searchQuery: DEFAULT_SEARCH_QUERY,
+  errorBarActive: DEFAULT_ERROR_BAR_VISIBILITY,
+  totalPages: Math.ceil(data.data.length / DEFAULT_PAGE_RANGE),
+  currentPage: DEFAULT_PAGE,
+  pageRange: DEFAULT_PAGE_RANGE,
 };
 
 const searchSlice = createSlice({
@@ -24,11 +33,13 @@ const searchSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
 
-      state.currentPage = 1;
+      state.currentPage = DEFAULT_PAGE;
       if (!state.searchQuery) {
         state.searchedItems = state.items;
         state.slicedSearchedItems = state.searchedItems;
-        state.totalPages = Math.ceil(state.searchedItems.length / 5);
+        state.totalPages = Math.ceil(
+          state.searchedItems.length / DEFAULT_PAGE_RANGE
+        );
       }
     },
     getSearchedItems: (state) => {
@@ -36,15 +47,15 @@ const searchSlice = createSlice({
         const nameSurname = item[0].toLowerCase();
         const query = state.searchQuery.toLowerCase().trim();
         const doesContain = nameSurname.includes(query);
-        //console.log("searchedItems", state.searchedItems);
-
         return doesContain;
       });
-      state.totalPages = Math.ceil(state.searchedItems.length / 5);
+      state.totalPages = Math.ceil(
+        state.searchedItems.length / DEFAULT_PAGE_RANGE
+      );
     },
     setSlicedSearchedItems: (state) => {
-      const indexOfLastPost = state.currentPage * 5;
-      const indexOfFirstPost = indexOfLastPost - 5;
+      const indexOfLastPost = state.currentPage * DEFAULT_PAGE_RANGE;
+      const indexOfFirstPost = indexOfLastPost - DEFAULT_PAGE_RANGE;
       const currentPost = state.searchedItems.slice(
         indexOfFirstPost,
         indexOfLastPost
@@ -66,24 +77,25 @@ const searchSlice = createSlice({
     setPageRange: (state, action) => {
       state.pageRange = action.payload;
     },
-    setCleanUp: (state, action) => {
+    setCleanUp: (state) => {
       state.searchedItems = [];
     },
 
     setOrderByFilter: (state, action) => {
-      if (Number(action.payload) === 0) {
+      if (Number(action.payload) === ORDER_BY_ASCENDING_NAME) {
         state.slicedSearchedItems = ascendingNameSort(
           state.slicedSearchedItems
         );
-      } else if (Number(action.payload) === 1) {
+      } else if (Number(action.payload) === ORDER_BY_DESCENDING_NAME) {
         state.slicedSearchedItems = descendingNameSort(
           state.slicedSearchedItems
         );
-      } else if (Number(action.payload) === 2) {
+      } else if (Number(action.payload) === ORDER_BY_ASCENDING_YEAR) {
         state.slicedSearchedItems = ascendingYearSort(
           state.slicedSearchedItems
         );
       } else {
+        //ORDER_BY_DESCENDING_YEAR
         state.slicedSearchedItems = descendingYearSort(
           state.slicedSearchedItems
         );

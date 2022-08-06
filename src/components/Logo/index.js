@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
-function Logo({ text, full }) {
+function Logo({ text }) {
   return (
     <div className={styles.logoWrapper}>
       {text ? (

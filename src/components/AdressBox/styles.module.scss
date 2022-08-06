@@ -1,0 +1,24 @@
+.adress {
+  display: flex;
+
+  color: var(--white);
+  width: 57%;
+  margin: 16px;
+
+  .adressText {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+
+    .fullAdress {
+      margin-bottom: 48px;
+    }
+
+    .contactTag {
+      font-weight: 700;
+    }
+    .emailTag {
+      font-weight: 700;
+    }
+  }
+}

@@ -18,7 +18,6 @@ function App() {
               path="/search-result/:query"
               element={<FullSearchResult />}
             />
-            {/* <Route path="/*" element={<NotFound />} /> */}
           </Routes>
         </Router>
       </div>

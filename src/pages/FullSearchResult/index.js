@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import Logo from "../../components/Logo";
 import SearchBox from "../../components/SearchBox";
@@ -7,16 +6,11 @@ import Pagination from "../../components/Pagination";
 
 import styles from "./styles.module.scss";
 import OrderBy from "../../components/OrderBy";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function FullSearchResult() {
-  const { query } = useParams();
-  const { searchedItems, totalPages } = useSelector((state) => state.search);
-  //const totalPages = items?.length;
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [pageRange, setPageRange] = useState(5);
+  const { searchedItems } = useSelector((state) => state.search);
 
   return (
     <div className={styles.fullResultWrapper}>

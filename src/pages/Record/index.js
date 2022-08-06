@@ -1,12 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import ErrorBox from "../../components/ErrorBox";
 import Input from "../../components/Input";
 import Logo from "../../components/Logo";
 import styles from "./styles.module.scss";
-import { dateFormatCurrent } from "../../helpers/dateFormat";
 import { formValidation } from "../../helpers/formValidation";
 import {
   setErrorBarActive,
@@ -14,7 +13,6 @@ import {
 } from "../../features/search/searchSlice";
 import { formNullCheck } from "../../helpers/formNullCheck";
 import returnBack from "../../assets/return-back.svg";
-import { flushSync } from "react-dom";
 function Record() {
   const [records, setRecords] = useState({
     name: "",
@@ -65,12 +63,10 @@ function Record() {
     },
   ];
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onClickHandler = (event) => {
     event.preventDefault();
-
-    console.log("nullErrorExist", barErrors);
-    console.log("validationErrorExist", inputErrors);
     if (!nullErrorExist) {
       if (!validationErrorExist) {
         const newRecord = [
@@ -84,21 +80,15 @@ function Record() {
         dispatch(setNewRecord(newRecord));
         dispatch(setErrorBarActive(false));
         alert("Done!");
+        navigate("/");
       } else {
         // validation errors occur
         dispatch(setErrorBarActive(true));
       }
     }
   };
-  // useEffect(() => {
-  //   let isReady = Object.values(records).every((x) => (x ? true : false));
-  //   setReadyForAdd(isReady);
-  //   console.log("isReady", isReady);
-  // }, [records]);
 
   useEffect(() => {
-    //event.preventDefault();
-
     setBarErrors(formValidation(records));
     setInputErrors(formNullCheck(records));
     //Validation for form inputs
