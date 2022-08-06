@@ -18,10 +18,6 @@ function FullSearchResult() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageRange, setPageRange] = useState(3);
 
-  useEffect(() => {
-    console.log(totalPages);
-  }, []);
-
   return (
     <div className={styles.fullResultWrapper}>
       <div className={styles.header}>

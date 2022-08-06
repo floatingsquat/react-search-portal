@@ -6,11 +6,16 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setSearchQuery,
   getSearchedItems,
+  setSlicedSearchedItems,
 } from "../../features/search/searchSlice";
 import { Link } from "react-router-dom";
 function SearchBox({ home }) {
   const dispatch = useDispatch();
   const { searchQuery, searchedItems } = useSelector((state) => state.search);
+
+  useEffect(() => {
+    dispatch(setSlicedSearchedItems());
+  }, [searchQuery]);
 
   const onChangeHandler = (e) => {
     if (e.target.value.length >= 0) {
