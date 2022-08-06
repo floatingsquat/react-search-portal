@@ -4,6 +4,11 @@
   justify-content: center;
   flex-direction: column;
 
+  .newRecordImg {
+    width: 149px;
+    height: 63px;
+  }
+
   .textWrapper {
     display: flex;
     justify-content: flex-end;

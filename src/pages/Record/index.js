@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
@@ -14,6 +14,7 @@ import {
 } from "../../features/search/searchSlice";
 import { formNullCheck } from "../../helpers/formNullCheck";
 import returnBack from "../../assets/return-back.svg";
+import { flushSync } from "react-dom";
 function Record() {
   const [records, setRecords] = useState({
     name: "",
@@ -22,12 +23,13 @@ function Record() {
     email: "",
     date: new Date().toLocaleDateString(),
   });
-  const [readyForAdd, setReadyForAdd] = useState(false);
+  //const [readyForAdd, setReadyForAdd] = useState(false);
   const [barErrors, setBarErrors] = useState({});
-  const [inputErrors, setInputErrors] = useState([]);
+  const [inputErrors, setInputErrors] = useState({});
   // const [errorBarActive, setErrorBarActive] = useState(false);
-  const { items, errorBarActive } = useSelector((state) => state.search);
-
+  const { errorBarActive } = useSelector((state) => state.search);
+  const validationErrorExist = Object.keys(barErrors).length >= 1;
+  const nullErrorExist = Object.keys(inputErrors).length >= 1;
   const valList = [
     {
       labelText: "Name Surname",
@@ -66,40 +68,49 @@ function Record() {
 
   const onClickHandler = (event) => {
     event.preventDefault();
-    setBarErrors(formValidation(records));
-    setInputErrors(formNullCheck(records));
 
-    const validationErrorExist = Object.keys(barErrors).length >= 1;
-    const nullErrorExist = Object.keys(inputErrors).length >= 1;
-    //console.log("input Error exist?", inputErrors);
-
-    if (validationErrorExist || nullErrorExist) {
-      if (nullErrorExist) {
-        console.log("inputlar null");
-      }
-      if (validationErrorExist) {
+    console.log("nullErrorExist", barErrors);
+    console.log("validationErrorExist", inputErrors);
+    if (!nullErrorExist) {
+      if (!validationErrorExist) {
+        const newRecord = [
+          records.name,
+          "Unknown Company",
+          records.email,
+          records.date,
+          records.country,
+          records.city,
+        ];
+        dispatch(setNewRecord(newRecord));
+        dispatch(setErrorBarActive(false));
+        alert("Done!");
+      } else {
+        // validation errors occur
         dispatch(setErrorBarActive(true));
       }
-    } else {
-      const newRecord = [
-        records.name,
-        "Unknown Company",
-        records.email,
-        records.date,
-        records.country,
-        records.city,
-      ];
-      dispatch(setNewRecord(newRecord));
-      dispatch(setErrorBarActive(false));
-      alert("Done!");
     }
   };
-
   // useEffect(() => {
   //   let isReady = Object.values(records).every((x) => (x ? true : false));
   //   setReadyForAdd(isReady);
   //   console.log("isReady", isReady);
   // }, [records]);
+
+  useEffect(() => {
+    //event.preventDefault();
+
+    setBarErrors(formValidation(records));
+    setInputErrors(formNullCheck(records));
+    //Validation for form inputs
+  }, [records]);
+
+  useEffect(() => {
+    if (validationErrorExist) {
+      dispatch(setErrorBarActive(true));
+    } else {
+      dispatch(setErrorBarActive(false));
+    }
+  }, [barErrors]);
 
   const onChangeHandler = (event) => {
     setRecords({ ...records, [event.target.name]: event.target.value });
@@ -128,7 +139,12 @@ function Record() {
             key={index}
           />
         ))}
-        <Button onClick={onClickHandler}>Add</Button>
+        <Button
+          disabled={nullErrorExist || validationErrorExist}
+          onClick={onClickHandler}
+        >
+          Add
+        </Button>
       </div>
 
       <div className={styles.errorMessage}>

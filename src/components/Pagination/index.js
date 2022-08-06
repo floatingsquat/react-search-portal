@@ -20,9 +20,9 @@ function Pagination() {
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  useEffect(() => {
-    dispatch(setSlicedSearchedItems());
-  }, [searchQuery]);
+  // useEffect(() => {
+  //   dispatch(setSlicedSearchedItems());
+  // }, [searchQuery]);
 
   const changePage = (index) => {
     dispatch(setCurrentPage(index));

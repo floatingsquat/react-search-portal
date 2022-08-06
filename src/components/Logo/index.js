@@ -15,7 +15,11 @@ function Logo({ text, full }) {
       ) : (
         <>
           <Link to="/">
-            <img src={logo} className={text && styles.logo} alt="logo" />
+            <img
+              src={logo}
+              className={text ? styles.logo : styles.newRecordImg}
+              alt="logo"
+            />
           </Link>
         </>
       )}

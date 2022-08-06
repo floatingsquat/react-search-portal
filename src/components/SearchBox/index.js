@@ -17,17 +17,12 @@ function SearchBox({ home }) {
 
   useEffect(() => {
     dispatch(setSlicedSearchedItems());
-
     dispatch(setPageRange(5)); // to fix : type something and go page at least 6, then type something another.
   }, [searchQuery]);
 
   const onChangeHandler = (e) => {
-    if (e.target.value.length >= 2) {
-      // 2 yap
+    if (e.target.value !== "") {
       dispatch(setSearchQuery(e.target.value));
-      dispatch(getSearchedItems());
-    } else if (e.target.value === "") {
-      dispatch(setSearchQuery(""));
       dispatch(getSearchedItems());
     }
   };

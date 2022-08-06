@@ -5,7 +5,7 @@ export const formValidation = (form) => {
   const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const errorList = {
-    name: "• Name - Surname: (only letters, min 4 – max 60 character)",
+    name: "• Name - Surname: (only letters, min 4 - max 60 character)",
     country: "• Country : (only letters, min 2 - max 40 character)",
     city: "• City: (only letters, min 2 - max 40 character)",
     email: "• Email: It is not valid!",
