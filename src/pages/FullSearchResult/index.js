@@ -8,9 +8,8 @@ import styles from "./styles.module.scss";
 import OrderBy from "../../components/OrderBy";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 function FullSearchResult() {
-  const { searchedItems } = useSelector((state) => state.search);
+  const { searchedItems, searchQuery } = useSelector((state) => state.search);
 
   return (
     <div className={styles.fullResultWrapper}>
@@ -25,7 +24,7 @@ function FullSearchResult() {
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
-          <SearchResult full={true} />
+          {searchQuery && <SearchResult full={true} />}
         </div>
         <div className={styles.order}>
           <OrderBy />
@@ -33,7 +32,7 @@ function FullSearchResult() {
       </div>
 
       <div className={styles.paginationWrapper}>
-        {searchedItems.length > 5 && <Pagination />}
+        {searchQuery && searchedItems.length > 5 && <Pagination />}
       </div>
     </div>
   );

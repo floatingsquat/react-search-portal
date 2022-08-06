@@ -29,6 +29,7 @@ function SearchBox({ home }) {
     } else {
       // clean up
       dispatch(setCleanUp());
+      dispatch(setSearchQuery(""));
     }
   };
   return (

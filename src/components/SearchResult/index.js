@@ -14,26 +14,20 @@ function SearchResult({ full }) {
       <div className={`${styles.resultWrapper} ${full && styles.full}`}>
         <div className={styles.result}>
           {searchedItems.length ? (
-            (full ? slicedSearchedItems : searchedItems).map(
-              (item, index) =>
-                full ? (
-                  <>
-                    <SearchResultItem key={index} item={item} /> <hr />
-                  </>
-                ) : (
-                  index < 3 && (
-                    <SearchResultItem
-                      key={Math.random()}
-                      item={item}
-                      full={true}
-                    />
-                  )
+            (full ? slicedSearchedItems : searchedItems).map((item, index) =>
+              full ? (
+                <>
+                  <SearchResultItem key={index} item={item} /> <hr />
+                </>
+              ) : (
+                index < 3 && (
+                  <SearchResultItem
+                    key={Math.random()}
+                    item={item}
+                    full={true}
+                  />
                 )
-              // if (index < 3) {
-              //   return <SearchResultItem item={item} />;
-              // }
-
-              // return null;
+              )
             )
           ) : (
             <h3>There is no any data!</h3>
