@@ -7,6 +7,8 @@ import {
   setSearchQuery,
   getSearchedItems,
   setSlicedSearchedItems,
+  setCurrentPage,
+  setPageRange,
 } from "../../features/search/searchSlice";
 import { Link } from "react-router-dom";
 function SearchBox({ home }) {
@@ -15,6 +17,8 @@ function SearchBox({ home }) {
 
   useEffect(() => {
     dispatch(setSlicedSearchedItems());
+
+    dispatch(setPageRange(5)); // to fix : type something and go page at least 6, then type something another.
   }, [searchQuery]);
 
   const onChangeHandler = (e) => {
