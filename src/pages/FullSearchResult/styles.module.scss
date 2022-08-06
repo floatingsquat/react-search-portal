@@ -55,13 +55,17 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1270px) {
   .contentWrapper {
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 100%;
 
     margin-left: -110px;
+  }
+
+  .newRecord {
+    margin-top: 15px;
   }
 
   .header {

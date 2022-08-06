@@ -26,9 +26,7 @@ function FullSearchResult() {
         <div className={styles.content}>
           {searchQuery && <SearchResult full={true} />}
         </div>
-        <div className={styles.order}>
-          <OrderBy />
-        </div>
+        <div className={styles.order}>{searchQuery && <OrderBy />}</div>
       </div>
 
       <div className={styles.paginationWrapper}>

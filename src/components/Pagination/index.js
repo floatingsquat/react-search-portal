@@ -49,7 +49,6 @@ function Pagination() {
     if (currentPage + 1 > pageRange) {
       dispatch(setPageRange(pageRange + DEFAULT_PAGE_RANGE));
     }
-    console.log("handleNext", currentPage + 1);
     dispatch(setCurrentPage(currentPage + 1));
     dispatch(setSlicedSearchedItems());
   };

@@ -64,7 +64,6 @@ const searchSlice = createSlice({
     },
 
     setNewRecord: (state, action) => {
-      //console.log(action.payload);
       state.items.push(action.payload);
       state.searchedItems.push(action.payload);
     },

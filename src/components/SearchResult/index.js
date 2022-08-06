@@ -17,7 +17,7 @@ function SearchResult({ full }) {
             (full ? slicedSearchedItems : searchedItems).map((item, index) =>
               full ? (
                 <>
-                  <SearchResultItem key={index} item={item} /> <hr />
+                  <SearchResultItem key={Math.random()} item={item} /> <hr />
                 </>
               ) : (
                 index < 3 && (
