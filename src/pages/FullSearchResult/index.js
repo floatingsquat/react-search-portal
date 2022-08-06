@@ -15,8 +15,8 @@ function FullSearchResult() {
   const { searchedItems, totalPages } = useSelector((state) => state.search);
   //const totalPages = items?.length;
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageRange, setPageRange] = useState(3);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [pageRange, setPageRange] = useState(5);
 
   return (
     <div className={styles.fullResultWrapper}>
@@ -39,15 +39,7 @@ function FullSearchResult() {
       </div>
 
       <div className={styles.paginationWrapper}>
-        {searchedItems.length > 5 && (
-          <Pagination
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
-            pageRange={pageRange}
-            setPageRange={setPageRange}
-          />
-        )}
+        {searchedItems.length > 5 && <Pagination />}
       </div>
     </div>
   );

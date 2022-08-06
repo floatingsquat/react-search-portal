@@ -9,6 +9,7 @@ import {
   setSlicedSearchedItems,
   setCurrentPage,
   setPageRange,
+  setCleanUp,
 } from "../../features/search/searchSlice";
 import { Link } from "react-router-dom";
 function SearchBox({ home }) {
@@ -18,12 +19,15 @@ function SearchBox({ home }) {
   useEffect(() => {
     dispatch(setSlicedSearchedItems());
     dispatch(setPageRange(5)); // to fix : type something and go page at least 6, then type something another.
-  }, [searchQuery]);
+  }, [setSearchQuery]);
 
   const onChangeHandler = (e) => {
     if (e.target.value !== "") {
       dispatch(setSearchQuery(e.target.value));
       dispatch(getSearchedItems());
+    } else {
+      // clean up
+      dispatch(setCleanUp());
     }
   };
   return (

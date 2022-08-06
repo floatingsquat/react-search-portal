@@ -15,7 +15,11 @@ function Input({ home, error, label, placeholder, ...rest }) {
         )}
         <input
           className={`${
-            error ? styles.errorInput : !home && styles.paddingRemove
+            error
+              ? styles.errorInput
+              : !home
+              ? styles.paddingRemove
+              : styles.paddingAdd
           }`}
           {...rest}
           placeholder={placeholder}

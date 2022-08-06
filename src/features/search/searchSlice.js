@@ -51,6 +51,7 @@ const searchSlice = createSlice({
       );
       state.slicedSearchedItems = currentPost;
     },
+
     setNewRecord: (state, action) => {
       //console.log(action.payload);
       state.items.push(action.payload);
@@ -64,6 +65,9 @@ const searchSlice = createSlice({
     },
     setPageRange: (state, action) => {
       state.pageRange = action.payload;
+    },
+    setCleanUp: (state, action) => {
+      state.searchedItems = [];
     },
 
     setOrderByFilter: (state, action) => {
@@ -98,5 +102,6 @@ export const {
   setPageRange,
   setSlicedSearchedItems,
   setOrderByFilter,
+  setCleanUp,
 } = searchSlice.actions;
 export default searchSlice.reducer;
